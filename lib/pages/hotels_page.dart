@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trip/pages/payment_page.dart';
 import 'package:trip/theme.dart';
 import 'package:trip/widget/floating_button.dart';
 import 'package:trip/widget/header.dart';
@@ -9,9 +10,21 @@ class HotelsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
-      floatingActionButton: FloatingButton(
-        buttonColor: purpleColor,
-        name: 'Continue to Payment',
+      floatingActionButton: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return PaymentPage();
+              },
+            ),
+          );
+        },
+        child: FloatingButton(
+          buttonColor: purpleColor,
+          name: 'Continue to Payment',
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: SafeArea(
