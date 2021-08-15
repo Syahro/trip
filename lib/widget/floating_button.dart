@@ -2,13 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:trip/theme.dart';
 
 class FloatingButton extends StatelessWidget {
+  final Color buttonColor;
+  final String name;
+
+  FloatingButton({
+    this.buttonColor,
+    this.name,
+  });
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 55,
       width: MediaQuery.of(context).size.width - (2 * defaultMargin),
       decoration: BoxDecoration(
-        color: purpleColor,
+        color: buttonColor,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Padding(
@@ -17,7 +24,7 @@ class FloatingButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Continue to Hotels',
+              name,
               style: semiBoldTextStyle.copyWith(
                 color: whiteColor,
                 fontSize: 16,

@@ -1,14 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:trip/pages/hotels_page.dart';
 import 'package:trip/theme.dart';
 import 'package:trip/widget/card_trip.dart';
 import 'package:trip/widget/floating_button.dart';
+import 'package:trip/widget/header.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
-      floatingActionButton: FloatingButton(),
+      floatingActionButton: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return HotelsPage();
+              },
+            ),
+          );
+        },
+        child: FloatingButton(
+          buttonColor: purpleColor,
+          name: 'Continue to Hotels',
+        ),
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: SafeArea(
         child: ListView(
@@ -23,40 +40,10 @@ class HomePage extends StatelessWidget {
                   SizedBox(
                     height: 30,
                   ),
-                  Row(
-                    children: [
-                      Container(
-                        height: 50,
-                        width: 50,
-                        decoration: BoxDecoration(
-                          color: cardColor,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Center(
-                          child: Image.asset('assets/icons/trip.png',
-                              width: 24, height: 20),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 16,
-                      ),
-                      Text(
-                        'Trip',
-                        style: mediumTextstyle.copyWith(
-                            fontSize: 24, color: whiteColor),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Text(
-                    'Whom You are Planning\nTo Travel With?',
-                    style: regularTextStyle.copyWith(
-                      color: whiteColor,
-                      fontSize: 24,
-                      letterSpacing: 1,
-                    ),
+                  Header(
+                    imageUrl: 'assets/icons/trip.png',
+                    pageTitle: 'Trip',
+                    title: 'Whom You are Planning\nTo Travel With?',
                   ),
                   SizedBox(
                     height: 30,
